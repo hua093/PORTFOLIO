@@ -321,28 +321,30 @@
             margin-bottom: 0;
         }
 
-        /* Tools & Platforms */
+        /* Tools & Platforms - Direct Display without container boxes */
         .tools-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 24px;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 30px;
+            align-items: center;
+            justify-items: center;
         }
 
         .tool-img-direct {
             width: 100%;
-            height: 180px;
+            max-width: 220px;
+            height: 160px;
             object-fit: contain;
-            background: #ffffff;
-            padding: 12px;
-            border: 1px solid var(--border-color);
-            border-radius: var(--radius-img);
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
+            background: transparent;
+            padding: 0;
+            border: none;
+            border-radius: 0;
+            transition: transform 0.3s ease;
             cursor: pointer;
         }
 
         .tool-img-direct:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-sm);
+            transform: translateY(-5px) scale(1.03);
         }
 
         /* General Project Styles */
@@ -396,12 +398,6 @@
             margin-top: 10px;
         }
 
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 24px;
-        }
-
         /* Project 1 Grid Custom Layout */
         .p1-grid-layout {
             display: grid;
@@ -428,21 +424,55 @@
             object-fit: cover;
         }
 
-        .side-by-side-layout {
+        /* Project 3 Custom Centered Layout */
+        .p3-comparison-grid {
             display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
+            grid-template-columns: 320px 1fr;
+            gap: 32px;
             align-items: center;
+            margin-bottom: 20px;
+        }
+
+        .p3-fixed-img {
+            width: 100%;
+            max-width: 320px;
+            height: 380px;
+            object-fit: contain;
+            background: #fff;
+            border-radius: var(--radius-img);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+        }
+
+        .p3-after-content {
+            display: flex;
+            align-items: center;
+            gap: 24px;
+            height: 100%;
+        }
+
+        .p3-after-img-wrap {
+            flex: 0 0 320px;
+        }
+
+        .p3-text-center-wrapper {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            padding-left: 10px;
         }
 
         .feature-list {
             padding-left: 20px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             color: var(--text-muted);
         }
 
         .feature-list li {
-            margin-bottom: 8px;
+            margin-bottom: 12px;
+            font-weight: 500;
         }
 
         .meta-box {
@@ -486,7 +516,7 @@
             font-style: italic;
         }
 
-        /* Project 4 Flow Process */
+        /* Project 4 Flow Process (Uncropped Images) */
         .flow-grid-clean {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -502,8 +532,10 @@
 
         .flow-img-uniform {
             width: 100%;
-            height: 220px;
-            object-fit: cover;
+            height: 240px;
+            object-fit: contain; /* Retains original ratio without cropping */
+            background-color: #ffffff;
+            padding: 8px;
             border-radius: var(--radius-img);
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-sm);
@@ -522,21 +554,28 @@
             margin-top: 12px;
         }
 
-        /* Project 4-2 Grid */
+        /* Project 4-2 9:16 Aspect Ratio Media */
         .p4-media-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 24px;
+            gap: 32px;
+            justify-items: center;
+        }
+
+        .p4-media-container {
+            width: 100%;
+            max-width: 320px;
         }
 
         .p4-uniform-media {
             width: 100%;
-            height: 380px;
+            aspect-ratio: 9 / 16;
             object-fit: cover;
             border-radius: var(--radius-img);
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-sm);
             cursor: pointer;
+            display: block;
         }
 
         .tight-spacing-header {
@@ -628,6 +667,26 @@
         }
 
         /* Responsive Breakpoints */
+        @media (max-width: 868px) {
+            .p3-comparison-grid {
+                grid-template-columns: 1fr;
+                justify-items: center;
+            }
+            .p3-after-content {
+                flex-direction: column;
+                align-items: center;
+            }
+            .p3-after-img-wrap {
+                flex: 0 0 auto;
+                width: 100%;
+                max-width: 320px;
+            }
+            .p3-text-center-wrapper {
+                padding-left: 0;
+                margin-top: 16px;
+            }
+        }
+
         @media (max-width: 768px) {
             .cover-content h1 { font-size: 3rem; margin-bottom: 20px; }
             .cover-content h2 { font-size: 1.4rem; }
@@ -637,7 +696,6 @@
             .grid-2x2-uniform .img-display { height: auto; }
             .flow-grid-clean { grid-template-columns: 1fr; }
             .p4-media-grid { grid-template-columns: 1fr; }
-            .p4-uniform-media { height: auto; }
             .section-title { font-size: 1.7rem; }
             .dropdown-menu { width: 280px; }
         }
@@ -898,23 +956,25 @@
                     <p class="project-desc">Transform unorganized product info into structured, appealing e-commerce listings for global audiences.</p>
                 </div>
 
-                <div class="gallery-grid" style="grid-template-columns: 1fr 1.2fr;">
+                <div class="p3-comparison-grid">
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--text-muted); text-align: center;">Before</h4>
-                        <img src="P3 raw - produk 1.1.png" alt="Raw Product" class="img-display zoomable">
+                        <img src="P3 raw-produk 1.1.png" alt="Raw Product" class="p3-fixed-img zoomable">
                     </div>
                     <div>
-                        <div class="side-by-side-layout">
-                            <div>
-                                <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (Product Promotional Poster)</h4>
-                                <img src="PROJECT 3 - POSTER PRODUCT LISTING.png" alt="Poster Product Listing" class="img-display zoomable">
+                        <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (Product Promotional Poster)</h4>
+                        <div class="p3-after-content">
+                            <div class="p3-after-img-wrap">
+                                <img src="PROJECT 3 - POSTER PRODUCT LISTING.png" alt="Poster Product Listing" class="p3-fixed-img zoomable">
                             </div>
-                            <ul class="feature-list" style="margin-top: 8px;">
-                                <li>Clean Layout</li>
-                                <li>Compelling Tagline</li>
-                                <li>Defined Product Imagery</li>
-                                <li>Clear Feature Call-Outs</li>
-                            </ul>
+                            <div class="p3-text-center-wrapper">
+                                <ul class="feature-list">
+                                    <li>Clean Layout</li>
+                                    <li>Compelling Tagline</li>
+                                    <li>Defined Product Imagery</li>
+                                    <li>Clear Feature Call-Outs</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -935,24 +995,26 @@
                     <h3>PROJECT 3: PRODUCT LISTING & LOCALIZATION (E-Commerce Page)</h3>
                 </div>
 
-                <div class="gallery-grid" style="grid-template-columns: 1fr 1.2fr;">
+                <div class="p3-comparison-grid">
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--text-muted); text-align: center;">Before</h4>
-                        <img src="P3 raw - produk 2.1.png" alt="Raw Product" class="img-display zoomable">
+                        <img src="P3 raw-produk 2.1.png" alt="Raw Product" class="p3-fixed-img zoomable">
                     </div>
                     <div>
-                        <div class="side-by-side-layout">
-                            <div>
-                                <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (E-Commerce Product Page)</h4>
-                                <img src="PROJECT 3 - ECOMMERCE PAGE.png" alt="E-Commerce Product Page" class="img-display zoomable">
+                        <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (E-Commerce Product Page)</h4>
+                        <div class="p3-after-content">
+                            <div class="p3-after-img-wrap">
+                                <img src="PROJECT 3 - ECOMMERCE PAGE.png" alt="E-Commerce Product Page" class="p3-fixed-img zoomable">
                             </div>
-                            <ul class="feature-list" style="margin-top: 8px;">
-                                <li>Optimized Accordion Layout</li>
-                                <li>Enhanced Visual Placement</li>
-                                <li>Benefit-Driven Tagline</li>
-                                <li>Structured Product Details</li>
-                                <li>Integrated Cross-Selling</li>
-                            </ul>
+                            <div class="p3-text-center-wrapper">
+                                <ul class="feature-list">
+                                    <li>Optimized Accordion Layout</li>
+                                    <li>Enhanced Visual Placement</li>
+                                    <li>Benefit-Driven Tagline</li>
+                                    <li>Structured Product Details</li>
+                                    <li>Integrated Cross-Selling</li>
+                                </ul>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -1007,11 +1069,11 @@
                 </div>
 
                 <div class="p4-media-grid" style="margin-bottom: 24px;">
-                    <div>
+                    <div class="p4-media-container">
                         <img src="PROJECT 4 - SOCIAL MEDIA CONTENT.png" alt="Social Media Content" class="p4-uniform-media zoomable">
                         <p class="caption-text">Social Media Content Post + Captions</p>
                     </div>
-                    <div>
+                    <div class="p4-media-container">
                         <video controls class="p4-uniform-media zoomable">
                             <source src="project 4-video edit.mp4" type="video/mp4">
                             Your browser does not support video playback.
