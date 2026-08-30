@@ -321,7 +321,7 @@
             margin-bottom: 0;
         }
 
-        /* Tools & Platforms - Direct Display without container boxes */
+        /* Tools & Platforms */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -424,36 +424,36 @@
             object-fit: cover;
         }
 
-        /* Project 3 Custom Centered Layout */
+        /* Project 3 Custom Centered Layout & Fitted Images */
         .p3-comparison-grid {
             display: grid;
-            grid-template-columns: 320px 1fr;
-            gap: 32px;
+            grid-template-columns: 300px 1fr;
+            gap: 28px;
             align-items: center;
             margin-bottom: 20px;
         }
 
         .p3-fixed-img {
             width: 100%;
-            max-width: 320px;
+            max-width: 300px;
             height: 380px;
-            object-fit: contain;
-            background: #fff;
+            object-fit: cover; /* Menutupi seluruh area box tanpa sisa space putih */
             border-radius: var(--radius-img);
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-sm);
             cursor: pointer;
+            display: block;
         }
 
         .p3-after-content {
             display: flex;
             align-items: center;
-            gap: 24px;
+            gap: 20px;
             height: 100%;
         }
 
         .p3-after-img-wrap {
-            flex: 0 0 320px;
+            flex: 0 0 300px;
         }
 
         .p3-text-center-wrapper {
@@ -461,17 +461,19 @@
             display: flex;
             flex-direction: column;
             justify-content: center;
-            padding-left: 10px;
+            padding-left: 8px;
         }
 
+        /* Ukuran Font Keterangan Project 3 Dikecilan */
         .feature-list {
-            padding-left: 20px;
-            font-size: 0.95rem;
+            padding-left: 18px;
+            font-size: 0.85rem; /* Font size lebih kecil */
             color: var(--text-muted);
+            line-height: 1.5;
         }
 
         .feature-list li {
-            margin-bottom: 12px;
+            margin-bottom: 10px;
             font-weight: 500;
         }
 
@@ -516,7 +518,7 @@
             font-style: italic;
         }
 
-        /* Project 4 Flow Process (Uncropped Images) */
+        /* Project 4 Flow Process */
         .flow-grid-clean {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -533,7 +535,7 @@
         .flow-img-uniform {
             width: 100%;
             height: 240px;
-            object-fit: contain; /* Retains original ratio without cropping */
+            object-fit: contain;
             background-color: #ffffff;
             padding: 8px;
             border-radius: var(--radius-img);
@@ -554,7 +556,7 @@
             margin-top: 12px;
         }
 
-        /* Project 4-2 9:16 Aspect Ratio Media */
+        /* Project 4-2 Media */
         .p4-media-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -679,7 +681,7 @@
             .p3-after-img-wrap {
                 flex: 0 0 auto;
                 width: 100%;
-                max-width: 320px;
+                max-width: 300px;
             }
             .p3-text-center-wrapper {
                 padding-left: 0;
@@ -959,7 +961,7 @@
                 <div class="p3-comparison-grid">
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--text-muted); text-align: center;">Before</h4>
-                        <img src="P3 raw-produk 1.1.png" alt="Raw Product" class="p3-fixed-img zoomable">
+                        <img src="P3 raw - produk 1.1.png" alt="Raw Product" class="p3-fixed-img zoomable">
                     </div>
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (Product Promotional Poster)</h4>
@@ -998,7 +1000,7 @@
                 <div class="p3-comparison-grid">
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--text-muted); text-align: center;">Before</h4>
-                        <img src="P3 raw-produk 2.1.png" alt="Raw Product" class="p3-fixed-img zoomable">
+                        <img src="P3 raw - produk 2.1.png" alt="Raw Product" class="p3-fixed-img zoomable">
                     </div>
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (E-Commerce Product Page)</h4>
