@@ -424,56 +424,62 @@
             object-fit: cover;
         }
 
-        /* Project 3 Custom Centered Layout & Fitted Images */
+        /* Project 3-1 & 3-2 Layout: Sejajar Atas & Center */
         .p3-comparison-grid {
             display: grid;
-            grid-template-columns: 300px 1fr;
+            grid-template-columns: 1fr 1fr;
             gap: 28px;
-            align-items: center;
+            align-items: start; /* Memastikan Judul "Before" dan "After" sejajar di paling atas */
+            justify-items: center; /* Memastikan konten per kolom berada di tengah-tengah */
             margin-bottom: 20px;
         }
 
         .p3-fixed-img {
             width: 100%;
-            max-width: 300px;
+            max-width: 320px;
             height: 380px;
-            object-fit: cover; /* Menutupi seluruh area box tanpa sisa space putih */
+            object-fit: contain;
+            background-color: #ffffff;
             border-radius: var(--radius-img);
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-sm);
             cursor: pointer;
             display: block;
+            margin: 0 auto;
         }
 
         .p3-after-content {
             display: flex;
+            flex-direction: column;
             align-items: center;
-            gap: 20px;
-            height: 100%;
+            justify-content: flex-start;
+            gap: 16px;
+            width: 100%;
         }
 
         .p3-after-img-wrap {
-            flex: 0 0 300px;
+            width: 100%;
+            max-width: 320px;
         }
 
         .p3-text-center-wrapper {
-            flex: 1;
+            width: 100%;
             display: flex;
-            flex-direction: column;
             justify-content: center;
-            padding-left: 8px;
+            padding-left: 0;
         }
 
-        /* Ukuran Font Keterangan Project 3 Dikecilan */
         .feature-list {
-            padding-left: 18px;
-            font-size: 0.85rem; /* Font size lebih kecil */
+            padding-left: 0;
+            list-style-position: inside;
+            font-size: 0.88rem;
             color: var(--text-muted);
-            line-height: 1.5;
+            line-height: 1.6;
+            text-align: left;
         }
 
         .feature-list li {
-            margin-bottom: 10px;
+            margin-bottom: 6px;
             font-weight: 500;
         }
 
@@ -675,17 +681,15 @@
                 justify-items: center;
             }
             .p3-after-content {
-                flex-direction: column;
                 align-items: center;
             }
             .p3-after-img-wrap {
-                flex: 0 0 auto;
                 width: 100%;
-                max-width: 300px;
+                max-width: 320px;
             }
             .p3-text-center-wrapper {
                 padding-left: 0;
-                margin-top: 16px;
+                margin-top: 8px;
             }
         }
 
@@ -717,7 +721,7 @@
         <a href="#projects">PROJECTS</a>
         <a href="#project-1" class="sub-item">• PROJECT 1: Product Data Management</a>
         <a href="#project-2-1" class="sub-item">• PROJECT 2: E-Commerce Dashboard</a>
-        <a href="#project-2-2" class="sub-item">• PROJECT 2: (Dashboard Video)</a>
+        <a href="#project-2-2" class="sub-item">• PROJECT 2 (Dashboard Video)</a>
         <a href="#project-3-1" class="sub-item">• PROJECT 3-1: Product Listing & Localization</a>
         <a href="#project-3-2" class="sub-item">• PROJECT 3-2: Product Listing & Localization</a>
         <a href="#project-4-1" class="sub-item">• PROJECT 4-1: Multilingual Support</a>
@@ -959,12 +963,12 @@
                 </div>
 
                 <div class="p3-comparison-grid">
-                    <div>
-                        <h4 style="margin-bottom:12px; color:var(--text-muted); text-align: center;">Before</h4>
+                    <div style="text-align: center; width: 100%;">
+                        <h4 style="margin-bottom:12px; color:var(--text-muted);">Before</h4>
                         <img src="P3 raw-produk 1.1.png" alt="Raw Product" class="p3-fixed-img zoomable">
                     </div>
-                    <div>
-                        <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (Product Promotional Poster)</h4>
+                    <div style="text-align: center; width: 100%;">
+                        <h4 style="margin-bottom:12px; color:var(--accent-hover);">After (Product Promotional Poster)</h4>
                         <div class="p3-after-content">
                             <div class="p3-after-img-wrap">
                                 <img src="PROJECT 3 - POSTER PRODUCT LISTING.png" alt="Poster Product Listing" class="p3-fixed-img zoomable">
@@ -998,12 +1002,12 @@
                 </div>
 
                 <div class="p3-comparison-grid">
-                    <div>
-                        <h4 style="margin-bottom:12px; color:var(--text-muted); text-align: center;">Before</h4>
+                    <div style="text-align: center; width: 100%;">
+                        <h4 style="margin-bottom:12px; color:var(--text-muted);">Before</h4>
                         <img src="P3 raw-produk 2.1.png" alt="Raw Product" class="p3-fixed-img zoomable">
                     </div>
-                    <div>
-                        <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (E-Commerce Product Page)</h4>
+                    <div style="text-align: center; width: 100%;">
+                        <h4 style="margin-bottom:12px; color:var(--accent-hover);">After (E-Commerce Product Page)</h4>
                         <div class="p3-after-content">
                             <div class="p3-after-img-wrap">
                                 <img src="PROJECT 3 - ECOMMERCE PAGE.png" alt="E-Commerce Product Page" class="p3-fixed-img zoomable">
