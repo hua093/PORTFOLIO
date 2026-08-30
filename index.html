@@ -14,21 +14,21 @@
 
     <style>
         :root {
-            /* Palette: Pink Beige & Cokelat Neutral */
-            --bg-color: #faf6f0;            /* Warm Off-White / Light Cream */
-            --card-bg: #ffffff;             /* Crisp Clean White */
-            --text-dark: #4a3b32;           /* Deep Espresso Brown */
-            --text-muted: #8c7a6b;          /* Soft Muted Taupe */
-            --accent-color: #c88a75;        /* Warm Rose Dusty / Terracotta Accent */
-            --accent-hover: #a86c58;        /* Deeper Warm Brown Accent */
-            --accent-warm: #8c5b49;         /* Soft Chocolate Accent */
-            --accent-bg: #f5ebe6;           /* Soft Pastel Pink Beige Background */
-            --border-color: #e8ded5;        /* Soft Warm Border */
+            --bg-color: #faf6f0;            
+            --card-bg: #ffffff;             
+            --text-dark: #4a3b32;           
+            --text-muted: #8c7a6b;          
+            --accent-color: #c88a75;        
+            --accent-hover: #a86c58;        
+            --accent-warm: #8c5b49;         
+            --accent-bg: #f5ebe6;           
+            --border-color: #e8ded5;        
             
             --shadow-sm: 0 4px 10px rgba(74, 59, 50, 0.04);
             --shadow-lg: 0 12px 28px rgba(74, 59, 50, 0.08);
             --radius-md: 14px;
             --radius-lg: 24px;
+            --radius-img: 10px; /* Radius khusus 10px sesuai permintaan */
         }
 
         * {
@@ -229,10 +229,11 @@
             width: 100%;
             max-width: 480px;
             height: auto;
-            border-radius: var(--radius-lg);
+            border-radius: var(--radius-img);
             box-shadow: var(--shadow-lg);
             border: 4px solid var(--card-bg);
             transition: transform 0.3s ease;
+            cursor: pointer;
         }
 
         .about-img img:hover {
@@ -320,33 +321,24 @@
             margin-bottom: 0;
         }
 
-        /* 4. Tools & Platforms */
+        /* 4. Tools & Platforms - Tanpa Block Putih */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            gap: 24px;
         }
 
-        .tool-card {
-            background: var(--card-bg);
-            border-radius: var(--radius-md);
-            padding: 20px;
-            text-align: center;
-            border: 1px solid var(--border-color);
-            box-shadow: var(--shadow-sm);
-            transition: all 0.3s ease;
-        }
-
-        .tool-card:hover {
-            transform: translateY(-4px);
-            box-shadow: var(--shadow-lg);
-        }
-
-        .tool-card img {
+        .tool-img-direct {
             width: 100%;
-            height: 150px;
+            height: 180px;
             object-fit: contain;
-            border-radius: 8px;
+            border-radius: var(--radius-img);
+            transition: transform 0.3s ease;
+            cursor: pointer;
+        }
+
+        .tool-img-direct:hover {
+            transform: translateY(-4px);
         }
 
         /* General Project Styles */
@@ -376,14 +368,20 @@
             margin-bottom: 20px;
         }
 
-        .img-display {
+        .img-display, video.img-display {
             max-width: 100%;
             height: auto;
-            border-radius: var(--radius-md);
+            border-radius: var(--radius-img);
             border: 1px solid var(--border-color);
             box-shadow: var(--shadow-sm);
             display: block;
             margin: 0 auto;
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .img-display:hover {
+            transform: scale(1.01);
         }
 
         .caption-text {
@@ -400,10 +398,30 @@
             gap: 24px;
         }
 
-        .grid-2x2 {
+        /* Project 1 Grid Custom Layout */
+        .p1-grid-layout {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 24px;
+        }
+
+        .p1-stacked-column {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        /* Project 2 Grid Uniform Height */
+        .grid-2x2-uniform {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .grid-2x2-uniform .img-display {
+            width: 100%;
+            height: 250px;
+            object-fit: cover;
         }
 
         .side-by-side-layout {
@@ -428,7 +446,7 @@
             border-radius: var(--radius-md);
             padding: 20px;
             margin-top: 24px;
-            font-size: 0.9rem;
+            font-size: 0.95rem;
             border-left: 4px solid var(--accent-color);
         }
 
@@ -436,8 +454,9 @@
             margin-bottom: 10px;
             display: flex;
             align-items: center;
-            gap: 12px;
+            gap: 8px;
             flex-wrap: wrap;
+            color: var(--text-dark);
         }
 
         .meta-box p:last-child {
@@ -446,12 +465,13 @@
 
         .meta-box strong {
             color: var(--text-dark);
-            min-width: 110px;
+            min-width: 120px;
         }
 
         .meta-box a {
-            display: inline-flex;
-            align-items: center;
+            color: var(--accent-hover);
+            text-decoration: underline;
+            font-weight: 600;
         }
 
         .disclaimer-note {
@@ -460,13 +480,6 @@
             margin-top: 12px;
             text-align: center;
             font-style: italic;
-        }
-
-        .tool-icon-small {
-            height: 30px;
-            width: auto;
-            object-fit: contain;
-            vertical-align: middle;
         }
 
         /* Flow Process */
@@ -489,11 +502,51 @@
             height: auto;
             margin: 0 auto 16px auto;
             display: block;
+            border-radius: var(--radius-img);
+            cursor: pointer;
         }
 
         .flow-card p {
             font-size: 0.95rem;
             font-weight: 600;
+        }
+
+        /* Modal Lightbox Popup */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            z-index: 99999;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(30, 20, 15, 0.85);
+            backdrop-filter: blur(5px);
+            align-items: center;
+            justify-content: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 85vh;
+            border-radius: var(--radius-img);
+            box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+            object-fit: contain;
+        }
+
+        .lightbox-close {
+            position: absolute;
+            top: 20px;
+            right: 30px;
+            color: #fff;
+            font-size: 2.5rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: color 0.2s;
+        }
+
+        .lightbox-close:hover {
+            color: var(--accent-color);
         }
 
         /* Tight Margin Helpers */
@@ -552,7 +605,9 @@
             .cover-content h1 { font-size: 3rem; margin-bottom: 20px; }
             .cover-content h2 { font-size: 1.4rem; }
             .about-grid { grid-template-columns: 1fr; }
-            .grid-2x2 { grid-template-columns: 1fr; }
+            .p1-grid-layout { grid-template-columns: 1fr; }
+            .grid-2x2-uniform { grid-template-columns: 1fr; }
+            .grid-2x2-uniform .img-display { height: auto; }
             .side-by-side-layout { grid-template-columns: 1fr; }
             .section-title { font-size: 1.7rem; }
             .dropdown-menu { width: 280px; }
@@ -569,7 +624,7 @@
         <a href="#home">HOME</a>
         <a href="#about">ABOUT ME</a>
         <a href="#services">MY SERVICES</a>
-        <a href="#tools">TOOLS & PLATFORMS/a>
+        <a href="#tools">TOOLS & PLATFORM</a>
         <a href="#projects">PROJECTS</a>
         <a href="#project-1" class="sub-item">• PROJECT 1: Product Data Management</a>
         <a href="#project-2-1" class="sub-item">• PROJECT 2: E-Commerce Dashboard</a>
@@ -606,7 +661,7 @@
                     </p>
                 </div>
                 <div class="about-img" data-aos="zoom-in" data-aos-delay="200">
-                    <img src="ava.png" alt="Rika Dina Saputra Mihardja">
+                    <img src="ava.png" alt="Rika Dina Saputra Mihardja" class="zoomable">
                 </div>
             </div>
         </div>
@@ -682,18 +737,10 @@
         <div class="container">
             <h2 class="section-title" data-aos="fade-right">TOOLS & PLATFORMS</h2>
             <div class="tools-grid" data-aos="fade-up">
-                <div class="tool-card">
-                    <img src="AI.jpg" alt="AI Tools">
-                </div>
-                <div class="tool-card">
-                    <img src="PRODUCTIVITY.jpg" alt="Productivity Tools">
-                </div>
-                <div class="tool-card">
-                    <img src="DESIGN.jpg" alt="Design Tools">
-                </div>
-                <div class="tool-card">
-                    <img src="COMMUNICATION.jpg" alt="Communication Tools">
-                </div>
+                <img src="AI.jpg" alt="AI Tools" class="tool-img-direct zoomable">
+                <img src="PRODUCTIVITY.jpg" alt="Productivity Tools" class="tool-img-direct zoomable">
+                <img src="DESIGN.jpg" alt="Design Tools" class="tool-img-direct zoomable">
+                <img src="COMMUNICATION.jpg" alt="Communication Tools" class="tool-img-direct zoomable">
             </div>
         </div>
     </section>
@@ -705,19 +752,21 @@
             
             <div class="project-block" data-aos="fade-up">
                 <div style="text-align: center; margin-bottom: 24px;">
-                    <img src="LOGO CROP HD.png" alt="Nainai Recipe Logo" style="max-width: 180px;">
+                    <!-- Logo diperbesar -->
+                    <img src="LOGO CROP HD.png" alt="Nainai Recipe Logo" class="zoomable" style="max-width: 260px; height: auto; border-radius: var(--radius-img);">
                     <p style="font-weight: 600; color: var(--accent-warm); margin-top: 10px;">
                         a fictional Taiwanese e-commerce brand in FnB, expanding into the indonesian market
                     </p>
                 </div>
                 
                 <div class="img-wrapper">
-                    <img src="progress.png" alt="Logo Design Progress" class="img-display" style="max-width: 600px;">
+                    <!-- Progress diperkecil agar tidak lebih besar dari logo -->
+                    <img src="progress.png" alt="Logo Design Progress" class="img-display zoomable" style="max-width: 220px;">
                     <p class="caption-text">Logo Design Progress</p>
                 </div>
 
                 <div class="meta-box">
-                    <p><strong>Tools:</strong> <img src="firealpaca.png" alt="FireAlpaca" class="tool-icon-small"></p>
+                    <p><strong>Tools:</strong> FireAlpaca</p>
                 </div>
                 <p class="disclaimer-note">* ALL DATA IN THIS CASE IS FICTIONAL AND CREATED FOR PORTFOLIO DEMONSTRATION PURPOSES</p>
             </div>
@@ -732,26 +781,29 @@
                     <p class="project-desc">Organized and standardized 20 SKU product data in Excel, achieving 100% data completeness and enabling stock status tracking.</p>
                 </div>
 
-                <div class="gallery-grid">
+                <!-- Processed Data di Atas, Clean Data di Bawah -->
+                <div class="p1-grid-layout">
                     <div class="img-wrapper">
-                        <img src="P1-raw data.png" alt="Raw Data" class="img-display">
+                        <img src="P1-raw data.png" alt="Raw Data" class="img-display zoomable">
                         <p class="caption-text">Raw Data</p>
                     </div>
-                    <div class="img-wrapper">
-                        <img src="P1-processed data.png" alt="Processed Data" class="img-display">
-                        <p class="caption-text">Processed Data</p>
-                    </div>
-                    <div class="img-wrapper">
-                        <img src="P1-clean data.png" alt="Clean Data" class="img-display">
-                        <p class="caption-text">Clean Data</p>
+                    <div class="p1-stacked-column">
+                        <div class="img-wrapper" style="margin-bottom:0;">
+                            <img src="P1-processed data.png" alt="Processed Data" class="img-display zoomable">
+                            <p class="caption-text">Processed Data</p>
+                        </div>
+                        <div class="img-wrapper" style="margin-bottom:0;">
+                            <img src="P1-clean data.png" alt="Clean Data" class="img-display zoomable">
+                            <p class="caption-text">Clean Data</p>
+                        </div>
                     </div>
                 </div>
 
                 <div class="meta-box">
-                    <p><strong>Tools:</strong> <img src="excel.png" alt="Excel" class="tool-icon-small"></p>
+                    <p><strong>Tools:</strong> Excel 2007</p>
                     <p><strong>Formulas:</strong> (*), IF, PROPER+TRIM</p>
                     <p><strong>Features:</strong> Text to Columns (Delimited), Conditional Formatting</p>
-                    <p><strong>Data Source:</strong> <img src="ChatGPT.png" alt="ChatGPT" class="tool-icon-small"></p>
+                    <p><strong>Data Source:</strong> ChatGPT</p>
                 </div>
             </div>
         </div>
@@ -765,30 +817,31 @@
                     <p class="project-desc">Transform raw sales data into an interactive dashboard for real-time tracking of revenue, profit, and stock status.</p>
                 </div>
 
-                <div class="grid-2x2">
+                <!-- 4 Foto dengan ukuran yang disamakan -->
+                <div class="grid-2x2-uniform">
                     <div class="img-wrapper">
-                        <img src="P2-clean data.png" alt="Data" class="img-display">
+                        <img src="P2-clean data.png" alt="Data" class="img-display zoomable">
                         <p class="caption-text">Data</p>
                     </div>
                     <div class="img-wrapper">
-                        <img src="P2-pivot.png" alt="PivotTable" class="img-display">
+                        <img src="P2-pivot.png" alt="PivotTable" class="img-display zoomable">
                         <p class="caption-text">PivotTable</p>
                     </div>
                     <div class="img-wrapper">
-                        <img src="P2-VBA.png" alt="VBA" class="img-display">
+                        <img src="P2-VBA.png" alt="VBA" class="img-display zoomable">
                         <p class="caption-text">VBA</p>
                     </div>
                     <div class="img-wrapper">
-                        <img src="P2-dashboard.png" alt="Dashboard" class="img-display">
+                        <img src="P2-dashboard.png" alt="Dashboard" class="img-display zoomable">
                         <p class="caption-text">Dashboard</p>
                     </div>
                 </div>
 
                 <div class="meta-box">
-                    <p><strong>Tools:</strong> <img src="excel.png" alt="Excel" class="tool-icon-small"></p>
+                    <p><strong>Tools:</strong> Excel 2007</p>
                     <p><strong>Formulas:</strong> (*), (-), (/), IF, AND, MAX, MIN, SUMIFS, YEAR, TEXT</p>
                     <p><strong>Features:</strong> Name Manager, PivotTable, VBA (Visual Basic for Applications)</p>
-                    <p><strong>Data Source:</strong> <img src="ChatGPT.png" alt="ChatGPT" class="tool-icon-small"></p>
+                    <p><strong>Data Source:</strong> ChatGPT</p>
                 </div>
             </div>
         </div>
@@ -803,7 +856,7 @@
                 </div>
 
                 <div style="text-align: center;">
-                    <video controls style="width: 100%; max-width: 800px; border-radius: var(--radius-md); box-shadow: var(--shadow-lg);">
+                    <video controls class="zoomable" style="width: 100%; max-width: 800px; border-radius: var(--radius-img); box-shadow: var(--shadow-lg);">
                         <source src="P2-SCREEN RECORDING.mp4" type="video/mp4">
                         Browser Anda tidak mendukung pemutaran video.
                     </video>
@@ -823,12 +876,12 @@
                 <div class="gallery-grid" style="grid-template-columns: 1fr 1.2fr;">
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--text-muted); text-align: center;">Before</h4>
-                        <img src="P3-raw produk 1.1.png" alt="Before Raw Product" class="img-display">
+                        <img src="P3-raw produk 1.1.png" alt="Before Raw Product" class="img-display zoomable">
                     </div>
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (Product Promotional Poster)</h4>
                         <div class="side-by-side-layout">
-                            <img src="PROJECT 3 - POSTER PRODUCT LISTING.png" alt="Poster Product Listing" class="img-display">
+                            <img src="PROJECT 3 - POSTER PRODUCT LISTING.png" alt="Poster Product Listing" class="img-display zoomable">
                             <ul class="feature-list">
                                 <li>Clean Layout</li>
                                 <li>Compelling Tagline</li>
@@ -840,21 +893,9 @@
                 </div>
 
                 <div class="meta-box">
-                    <p>
-                        <strong>Tools:</strong> 
-                        <img src="excel.png" alt="Excel" class="tool-icon-small">
-                        <img src="canva.png" alt="Canva" class="tool-icon-small">
-                    </p>
-                    <p>
-                        <strong>Data Source:</strong> 
-                        <a href="https://www.madamhong.com.tw/zh-TW/產品資訊/bubble-tea-kit/bubble-tea-kit-1/original-bubble-milk-tea-kit" target="_blank">
-                            <img src="google.png" alt="Google Data Source" class="tool-icon-small">
-                        </a>
-                    </p>
-                    <p>
-                        <strong>Visual Source:</strong> 
-                        <img src="gemini.png" alt="Gemini Visual Source" class="tool-icon-small">
-                    </p>
+                    <p><strong>Tools:</strong> Excel 2007, Canva</p>
+                    <p><strong>Data Source:</strong> <a href="https://www.madamhong.com.tw/zh-TW/產品資訊/bubble-tea-kit/bubble-tea-kit-1/original-bubble-milk-tea-kit" target="_blank">Google</a></p>
+                    <p><strong>Visual Source:</strong> Gemini AI</p>
                 </div>
             </div>
         </div>
@@ -870,12 +911,12 @@
                 <div class="gallery-grid" style="grid-template-columns: 1fr 1.2fr;">
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--text-muted); text-align: center;">Before</h4>
-                        <img src="P3-raw produk 2.1.png" alt="Raw Product 2.1" class="img-display">
+                        <img src="P3-raw produk 2.1.png" alt="Raw Product 2.1" class="img-display zoomable">
                     </div>
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (E-Commerce Product Page)</h4>
                         <div class="side-by-side-layout">
-                            <img src="PROJECT 3 - ECOMMERCE PAGE.png" alt="E-Commerce Product Page" class="img-display">
+                            <img src="PROJECT 3 - ECOMMERCE PAGE.png" alt="E-Commerce Product Page" class="img-display zoomable">
                             <ul class="feature-list">
                                 <li>Optimized Accordion Layout</li>
                                 <li>Enhanced Visual Placement</li>
@@ -888,21 +929,9 @@
                 </div>
 
                 <div class="meta-box">
-                    <p>
-                        <strong>Tools:</strong> 
-                        <img src="excel.png" alt="Excel" class="tool-icon-small">
-                        <img src="canva.png" alt="Canva" class="tool-icon-small">
-                    </p>
-                    <p>
-                        <strong>Data Source:</strong> 
-                        <a href="https://www.sunmerry.com.tw/zh-TW/products/pineapple-cakes-10pcs" target="_blank">
-                            <img src="google.png" alt="Google Data Source" class="tool-icon-small">
-                        </a>
-                    </p>
-                    <p>
-                        <strong>Visual Source:</strong> 
-                        <img src="gemini.png" alt="Gemini Visual Source" class="tool-icon-small">
-                    </p>
+                    <p><strong>Tools:</strong> Excel 2007, Canva</p>
+                    <p><strong>Data Source:</strong> <a href="https://www.sunmerry.com.tw/zh-TW/products/pineapple-cakes-10pcs" target="_blank">Google</a></p>
+                    <p><strong>Visual Source:</strong> Gemini AI</p>
                 </div>
             </div>
         </div>
@@ -919,21 +948,21 @@
 
                 <div class="flow-grid" style="margin-bottom: 24px;">
                     <div class="flow-card">
-                        <img src="1.png" alt="Step 1">
+                        <img src="1.png" alt="Step 1" class="zoomable">
                         <p>International Customer Reports an Issue</p>
                     </div>
                     <div class="flow-card">
-                        <img src="2.png" alt="Step 2">
+                        <img src="2.png" alt="Step 2" class="zoomable">
                         <p>Communicate the Issue to the Local Team</p>
                     </div>
                     <div class="flow-card">
-                        <img src="3.png" alt="Step 3">
+                        <img src="3.png" alt="Step 3" class="zoomable">
                         <p>Respond to the Customer's Inquiry</p>
                     </div>
                 </div>
 
                 <div class="meta-box">
-                    <p><strong>Visual Source:</strong> <img src="gemini.png" alt="Gemini" class="tool-icon-small"></p>
+                    <p><strong>Visual Source:</strong> Gemini AI</p>
                 </div>
             </div>
         </div>
@@ -950,11 +979,11 @@
 
                 <div class="gallery-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 24px;">
                     <div class="img-wrapper">
-                        <img src="PROJECT 4 - SOCIAL MEDIA CONTENT.png" alt="Social Media Content" class="img-display">
+                        <img src="PROJECT 4 - SOCIAL MEDIA CONTENT.png" alt="Social Media Content" class="img-display zoomable">
                         <p class="caption-text">Social Media Content Post + Captions</p>
                     </div>
                     <div class="img-wrapper">
-                        <video controls class="img-display" style="width: 100%;">
+                        <video controls class="img-display zoomable" style="width: 100%;">
                             <source src="project 4-video edit.mp4" type="video/mp4">
                             Browser Anda tidak mendukung pemutaran video.
                         </video>
@@ -963,18 +992,9 @@
                 </div>
 
                 <div class="meta-box">
-                    <p>
-                        <strong>Tools:</strong> 
-                        <img src="canva.png" alt="Canva" class="tool-icon-small">
-                        <img src="capcut.png" alt="CapCut" class="tool-icon-small">
-                        <img src="filmora.png" alt="Filmora" class="tool-icon-small">
-                    </p>
-                    <p><strong>Visual Source:</strong> <img src="gemini.png" alt="Gemini" class="tool-icon-small"></p>
-                    <p>
-                        <strong>Video Source:</strong> 
-                        <img src="yt.png" alt="YouTube" class="tool-icon-small">
-                        <img src="tiktok.png" alt="TikTok" class="tool-icon-small">
-                    </p>
+                    <p><strong>Tools:</strong> Canva, CapCut, Filmora</p>
+                    <p><strong>Visual Source:</strong> Gemini AI</p>
+                    <p><strong>Video Source:</strong> YouTube, TikTok</p>
                 </div>
             </div>
         </div>
@@ -996,7 +1016,7 @@
                 </a>
 
                 <a href="https://www.linkedin.com/in/rika-dina-saputra-mihardja-34b426409?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="contact-btn">
-                    <img src="linkedin.png" alt="LinkedIn">
+                    <img src="linkedin.png" alt="LinkedIn" onerror="this.remove();">
                     <span>Rika Dina Saputra Mihardja</span>
                 </a>
 
@@ -1008,6 +1028,12 @@
         </div>
     </section>
 
+    <!-- Modal Pop-up / Lightbox (Zoom In Foto / Video) -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <span class="lightbox-close" id="lightboxClose">&times;</span>
+        <div id="lightboxContainer" style="display:flex; justify-content:center; align-items:center;"></div>
+    </div>
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/aos/2.3.4/aos.js"></script>
     <script>
         AOS.init({
@@ -1016,6 +1042,7 @@
             offset: 100
         });
 
+        // Toggle Navigation
         const menuBtn = document.getElementById('menuBtn');
         const dropdownNav = document.getElementById('dropdownNav');
 
@@ -1032,6 +1059,48 @@
         document.addEventListener('click', (e) => {
             if (!menuBtn.contains(e.target) && !dropdownNav.contains(e.target)) {
                 dropdownNav.classList.remove('active');
+            }
+        });
+
+        // Lightbox Popup Script (Fitur Zoom Foto & Video saat diklik)
+        const modal = document.getElementById('lightboxModal');
+        const container = document.getElementById('lightboxContainer');
+        const closeBtn = document.getElementById('lightboxClose');
+
+        document.querySelectorAll('.zoomable').forEach(elem => {
+            elem.addEventListener('click', (e) => {
+                // Mencegah trigger jika mengeklik kontrol bawaan video
+                if (e.target.tagName.toLowerCase() === 'video' && e.offsetY > e.target.clientHeight - 40) {
+                    return;
+                }
+                
+                container.innerHTML = '';
+                if (elem.tagName.toLowerCase() === 'img') {
+                    const img = document.createElement('img');
+                    img.src = elem.src;
+                    img.className = 'lightbox-content';
+                    container.appendChild(img);
+                } else if (elem.tagName.toLowerCase() === 'video') {
+                    const video = document.createElement('video');
+                    video.src = elem.querySelector('source').src;
+                    video.controls = true;
+                    video.autoplay = true;
+                    video.className = 'lightbox-content';
+                    container.appendChild(video);
+                }
+                modal.style.display = 'flex';
+            });
+        });
+
+        closeBtn.addEventListener('click', () => {
+            modal.style.display = 'none';
+            container.innerHTML = '';
+        });
+
+        modal.addEventListener('click', (e) => {
+            if (e.target === modal) {
+                modal.style.display = 'none';
+                container.innerHTML = '';
             }
         });
     </script>
