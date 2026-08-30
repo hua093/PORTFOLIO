@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -321,7 +321,7 @@
             margin-bottom: 0;
         }
 
-        /* Tools & Platforms - Ukuran Disamakan Uniform */
+        /* Tools & Platforms */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -486,7 +486,7 @@
             font-style: italic;
         }
 
-        /* Project 4 Flow Process (Tanpa Box Pembungkus) */
+        /* Project 4 Flow Process */
         .flow-grid-clean {
             display: grid;
             grid-template-columns: repeat(3, 1fr);
@@ -522,7 +522,7 @@
             margin-top: 12px;
         }
 
-        /* Project 4-2 Grid dengan Ukuran Foto Sama */
+        /* Project 4-2 Grid */
         .p4-media-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -653,7 +653,7 @@
         <a href="#home">HOME</a>
         <a href="#about">ABOUT ME</a>
         <a href="#services">MY SERVICES</a>
-        <a href="#tools">TOOLS & PLATFORM</a>
+        <a href="#tools">TOOLS & PLATFORMS</a>
         <a href="#projects">PROJECTS</a>
         <a href="#project-1" class="sub-item">• PROJECT 1: Product Data Management</a>
         <a href="#project-2-1" class="sub-item">• PROJECT 2: E-Commerce Dashboard</a>
@@ -883,7 +883,7 @@
                 <div style="text-align: center;">
                     <video controls class="zoomable" style="width: 100%; max-width: 800px; border-radius: var(--radius-img); box-shadow: var(--shadow-lg);">
                         <source src="P2-SCREEN RECORDING.mp4" type="video/mp4">
-                        Browser Anda tidak mendukung pemutaran video.
+                        Your browser does not support video playback.
                     </video>
                 </div>
             </div>
@@ -901,10 +901,9 @@
                 <div class="gallery-grid" style="grid-template-columns: 1fr 1.2fr;">
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--text-muted); text-align: center;">Before</h4>
-                        <img src="P3 raw - produk 1.1.png" alt="Before Raw Product" class="img-display zoomable">
+                        <img src="P3 raw - produk 1.1.png" alt="Raw Product" class="img-display zoomable">
                     </div>
                     <div>
-                        <!-- Judul After berposisi persis di tengah kolom gambar -->
                         <div class="side-by-side-layout">
                             <div>
                                 <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (Product Promotional Poster)</h4>
@@ -939,10 +938,9 @@
                 <div class="gallery-grid" style="grid-template-columns: 1fr 1.2fr;">
                     <div>
                         <h4 style="margin-bottom:12px; color:var(--text-muted); text-align: center;">Before</h4>
-                        <img src="P3 raw - produk 2.1.png" alt="Raw Product 2.1" class="img-display zoomable">
+                        <img src="P3 raw - produk 2.1.png" alt="Raw Product" class="img-display zoomable">
                     </div>
                     <div>
-                        <!-- Judul After berposisi persis di tengah kolom gambar -->
                         <div class="side-by-side-layout">
                             <div>
                                 <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (E-Commerce Product Page)</h4>
@@ -977,7 +975,6 @@
                     <p class="project-desc" style="margin-bottom: 24px;">Bridge trilingual support to resolve cross-border customer and team issues.</p>
                 </div>
 
-                <!-- Foto tanpa box pembungkus & Ukuran disamakan -->
                 <div class="flow-grid-clean" style="margin-bottom: 24px;">
                     <div class="flow-item-clean">
                         <img src="1.png" alt="Get a Report" class="flow-img-uniform zoomable">
@@ -1009,7 +1006,6 @@
                     <p class="project-desc" style="margin-bottom: 24px;">Create engaging, localized social media content tailored for target audiences across 3 languages.</p>
                 </div>
 
-                <!-- Ukuran Foto & Video Disamakan Secara Presisi -->
                 <div class="p4-media-grid" style="margin-bottom: 24px;">
                     <div>
                         <img src="PROJECT 4 - SOCIAL MEDIA CONTENT.png" alt="Social Media Content" class="p4-uniform-media zoomable">
@@ -1018,7 +1014,7 @@
                     <div>
                         <video controls class="p4-uniform-media zoomable">
                             <source src="project 4-video edit.mp4" type="video/mp4">
-                            Browser Anda tidak mendukung pemutaran video.
+                            Your browser does not support video playback.
                         </video>
                         <p class="caption-text">Video Editing</p>
                     </div>
@@ -1061,7 +1057,6 @@
         </div>
     </section>
 
-    <!-- Modal Pop-up / Lightbox (Zoom In Foto / Video) -->
     <div class="lightbox-modal" id="lightboxModal">
         <span class="lightbox-close" id="lightboxClose">&times;</span>
         <div id="lightboxContainer" style="display:flex; justify-content:center; align-items:center;"></div>
