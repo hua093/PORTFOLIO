@@ -28,7 +28,7 @@
             --shadow-lg: 0 12px 28px rgba(74, 59, 50, 0.08);
             --radius-md: 14px;
             --radius-lg: 24px;
-            --radius-img: 10px; /* Radius khusus 10px sesuai permintaan */
+            --radius-img: 10px;
         }
 
         * {
@@ -166,7 +166,7 @@
             padding-left: 41px;
         }
 
-        /* 1. Cover Section */
+        /* Cover Section */
         #home {
             min-height: 100vh;
             display: flex;
@@ -200,7 +200,7 @@
             font-weight: 500;
         }
 
-        /* 2. About Me Section */
+        /* About Me Section */
         .about-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
@@ -240,7 +240,7 @@
             transform: translateY(-5px);
         }
 
-        /* 3. My Services */
+        /* My Services */
         .services-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
@@ -321,7 +321,7 @@
             margin-bottom: 0;
         }
 
-        /* 4. Tools & Platforms - Tanpa Block Putih */
+        /* Tools & Platforms - Ukuran Disamakan Uniform */
         .tools-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
@@ -332,13 +332,17 @@
             width: 100%;
             height: 180px;
             object-fit: contain;
+            background: #ffffff;
+            padding: 12px;
+            border: 1px solid var(--border-color);
             border-radius: var(--radius-img);
-            transition: transform 0.3s ease;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             cursor: pointer;
         }
 
         .tool-img-direct:hover {
             transform: translateY(-4px);
+            box-shadow: var(--shadow-sm);
         }
 
         /* General Project Styles */
@@ -426,8 +430,8 @@
 
         .side-by-side-layout {
             display: grid;
-            grid-template-columns: 1.2fr 0.8fr;
-            gap: 24px;
+            grid-template-columns: 1fr;
+            gap: 16px;
             align-items: center;
         }
 
@@ -482,33 +486,61 @@
             font-style: italic;
         }
 
-        /* Flow Process */
-        .flow-grid {
+        /* Project 4 Flow Process (Tanpa Box Pembungkus) */
+        .flow-grid-clean {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 20px;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
             text-align: center;
         }
 
-        .flow-card {
-            background: var(--bg-color);
-            padding: 24px;
-            border-radius: var(--radius-md);
-            border: 1px solid var(--border-color);
+        .flow-item-clean {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
         }
 
-        .flow-card img {
-            max-width: 100px;
-            height: auto;
-            margin: 0 auto 16px auto;
-            display: block;
+        .flow-img-uniform {
+            width: 100%;
+            height: 220px;
+            object-fit: cover;
             border-radius: var(--radius-img);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
+            cursor: pointer;
+            transition: transform 0.2s ease;
+        }
+
+        .flow-img-uniform:hover {
+            transform: scale(1.02);
+        }
+
+        .flow-item-clean p {
+            font-size: 0.95rem;
+            font-weight: 600;
+            color: var(--text-dark);
+            margin-top: 12px;
+        }
+
+        /* Project 4-2 Grid dengan Ukuran Foto Sama */
+        .p4-media-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 24px;
+        }
+
+        .p4-uniform-media {
+            width: 100%;
+            height: 380px;
+            object-fit: cover;
+            border-radius: var(--radius-img);
+            border: 1px solid var(--border-color);
+            box-shadow: var(--shadow-sm);
             cursor: pointer;
         }
 
-        .flow-card p {
-            font-size: 0.95rem;
-            font-weight: 600;
+        .tight-spacing-header {
+            margin-bottom: 12px !important;
         }
 
         /* Modal Lightbox Popup */
@@ -547,11 +579,6 @@
 
         .lightbox-close:hover {
             color: var(--accent-color);
-        }
-
-        /* Tight Margin Helpers */
-        .tight-spacing-header {
-            margin-bottom: 12px !important;
         }
 
         /* Let's Work Together */
@@ -608,7 +635,9 @@
             .p1-grid-layout { grid-template-columns: 1fr; }
             .grid-2x2-uniform { grid-template-columns: 1fr; }
             .grid-2x2-uniform .img-display { height: auto; }
-            .side-by-side-layout { grid-template-columns: 1fr; }
+            .flow-grid-clean { grid-template-columns: 1fr; }
+            .p4-media-grid { grid-template-columns: 1fr; }
+            .p4-uniform-media { height: auto; }
             .section-title { font-size: 1.7rem; }
             .dropdown-menu { width: 280px; }
         }
@@ -752,7 +781,6 @@
             
             <div class="project-block" data-aos="fade-up">
                 <div style="text-align: center; margin-bottom: 24px;">
-                    <!-- Logo diperbesar -->
                     <img src="LOGO CROP HD.png" alt="Nainai Recipe Logo" class="zoomable" style="max-width: 260px; height: auto; border-radius: var(--radius-img);">
                     <p style="font-weight: 600; color: var(--accent-warm); margin-top: 10px;">
                         a fictional Taiwanese e-commerce brand in FnB, expanding into the indonesian market
@@ -760,7 +788,6 @@
                 </div>
                 
                 <div class="img-wrapper">
-                    <!-- Progress diperkecil agar tidak lebih besar dari logo -->
                     <img src="progress.png" alt="Logo Design Progress" class="img-display zoomable" style="max-width: 220px;">
                     <p class="caption-text">Logo Design Progress</p>
                 </div>
@@ -781,7 +808,6 @@
                     <p class="project-desc">Organized and standardized 20 SKU product data in Excel, achieving 100% data completeness and enabling stock status tracking.</p>
                 </div>
 
-                <!-- Processed Data di Atas, Clean Data di Bawah -->
                 <div class="p1-grid-layout">
                     <div class="img-wrapper">
                         <img src="P1-raw data.png" alt="Raw Data" class="img-display zoomable">
@@ -817,7 +843,6 @@
                     <p class="project-desc">Transform raw sales data into an interactive dashboard for real-time tracking of revenue, profit, and stock status.</p>
                 </div>
 
-                <!-- 4 Foto dengan ukuran yang disamakan -->
                 <div class="grid-2x2-uniform">
                     <div class="img-wrapper">
                         <img src="P2-clean data.png" alt="Data" class="img-display zoomable">
@@ -879,10 +904,13 @@
                         <img src="P3 raw - produk 1.1.png" alt="Before Raw Product" class="img-display zoomable">
                     </div>
                     <div>
-                        <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (Product Promotional Poster)</h4>
+                        <!-- Judul After berposisi persis di tengah kolom gambar -->
                         <div class="side-by-side-layout">
-                            <img src="PROJECT 3 - POSTER PRODUCT LISTING.png" alt="Poster Product Listing" class="img-display zoomable">
-                            <ul class="feature-list">
+                            <div>
+                                <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (Product Promotional Poster)</h4>
+                                <img src="PROJECT 3 - POSTER PRODUCT LISTING.png" alt="Poster Product Listing" class="img-display zoomable">
+                            </div>
+                            <ul class="feature-list" style="margin-top: 8px;">
                                 <li>Clean Layout</li>
                                 <li>Compelling Tagline</li>
                                 <li>Defined Product Imagery</li>
@@ -914,10 +942,13 @@
                         <img src="P3 raw - produk 2.1.png" alt="Raw Product 2.1" class="img-display zoomable">
                     </div>
                     <div>
-                        <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (E-Commerce Product Page)</h4>
+                        <!-- Judul After berposisi persis di tengah kolom gambar -->
                         <div class="side-by-side-layout">
-                            <img src="PROJECT 3 - ECOMMERCE PAGE.png" alt="E-Commerce Product Page" class="img-display zoomable">
-                            <ul class="feature-list">
+                            <div>
+                                <h4 style="margin-bottom:12px; color:var(--accent-hover); text-align: center;">After (E-Commerce Product Page)</h4>
+                                <img src="PROJECT 3 - ECOMMERCE PAGE.png" alt="E-Commerce Product Page" class="img-display zoomable">
+                            </div>
+                            <ul class="feature-list" style="margin-top: 8px;">
                                 <li>Optimized Accordion Layout</li>
                                 <li>Enhanced Visual Placement</li>
                                 <li>Benefit-Driven Tagline</li>
@@ -943,20 +974,21 @@
                 <div class="project-header tight-spacing-header">
                     <h3 style="margin-bottom: 4px;">PROJECT 4: MULTILINGUAL CUSTOMER & CONTENT SUPPORT</h3>
                     <p class="project-desc" style="font-weight:700; color:var(--accent-hover); margin-bottom: 4px;">Case 1 — Customer Support</p>
-                    <p class="project-desc" style="margin-bottom: 16px;">Bridge trilingual support to resolve cross-border customer and team issues.</p>
+                    <p class="project-desc" style="margin-bottom: 24px;">Bridge trilingual support to resolve cross-border customer and team issues.</p>
                 </div>
 
-                <div class="flow-grid" style="margin-bottom: 24px;">
-                    <div class="flow-card">
-                        <img src="1.png" alt="Step 1" class="zoomable">
+                <!-- Foto tanpa box pembungkus & Ukuran disamakan -->
+                <div class="flow-grid-clean" style="margin-bottom: 24px;">
+                    <div class="flow-item-clean">
+                        <img src="1.png" alt="Get a Report" class="flow-img-uniform zoomable">
                         <p>International Customer Reports an Issue</p>
                     </div>
-                    <div class="flow-card">
-                        <img src="2.png" alt="Step 2" class="zoomable">
+                    <div class="flow-item-clean">
+                        <img src="2.png" alt="Communicate" class="flow-img-uniform zoomable">
                         <p>Communicate the Issue to the Local Team</p>
                     </div>
-                    <div class="flow-card">
-                        <img src="3.png" alt="Step 3" class="zoomable">
+                    <div class="flow-item-clean">
+                        <img src="3.png" alt="Respond" class="flow-img-uniform zoomable">
                         <p>Respond to the Customer's Inquiry</p>
                     </div>
                 </div>
@@ -974,16 +1006,17 @@
                 <div class="project-header tight-spacing-header">
                     <h3 style="margin-bottom: 4px;">PROJECT 4: MULTILINGUAL CUSTOMER & CONTENT SUPPORT</h3>
                     <p class="project-desc" style="font-weight:700; color:var(--accent-hover); margin-bottom: 4px;">Case 2 — Content Support</p>
-                    <p class="project-desc" style="margin-bottom: 16px;">Create engaging, localized social media content tailored for target audiences across 3 languages.</p>
+                    <p class="project-desc" style="margin-bottom: 24px;">Create engaging, localized social media content tailored for target audiences across 3 languages.</p>
                 </div>
 
-                <div class="gallery-grid" style="grid-template-columns: 1fr 1fr; margin-bottom: 24px;">
-                    <div class="img-wrapper">
-                        <img src="PROJECT 4 - SOCIAL MEDIA CONTENT.png" alt="Social Media Content" class="img-display zoomable">
+                <!-- Ukuran Foto & Video Disamakan Secara Presisi -->
+                <div class="p4-media-grid" style="margin-bottom: 24px;">
+                    <div>
+                        <img src="PROJECT 4 - SOCIAL MEDIA CONTENT.png" alt="Social Media Content" class="p4-uniform-media zoomable">
                         <p class="caption-text">Social Media Content Post + Captions</p>
                     </div>
-                    <div class="img-wrapper">
-                        <video controls class="img-display zoomable" style="width: 100%;">
+                    <div>
+                        <video controls class="p4-uniform-media zoomable">
                             <source src="project 4-video edit.mp4" type="video/mp4">
                             Browser Anda tidak mendukung pemutaran video.
                         </video>
@@ -1016,7 +1049,7 @@
                 </a>
 
                 <a href="https://www.linkedin.com/in/rika-dina-saputra-mihardja-34b426409?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank" class="contact-btn">
-                    <img src="linkedin.png" alt="LinkedIn" onerror="this.remove();">
+                    <img src="linkedin.png" alt="LinkedIn">
                     <span>Rika Dina Saputra Mihardja</span>
                 </a>
 
@@ -1042,7 +1075,6 @@
             offset: 100
         });
 
-        // Toggle Navigation
         const menuBtn = document.getElementById('menuBtn');
         const dropdownNav = document.getElementById('dropdownNav');
 
@@ -1062,14 +1094,12 @@
             }
         });
 
-        // Lightbox Popup Script (Fitur Zoom Foto & Video saat diklik)
         const modal = document.getElementById('lightboxModal');
         const container = document.getElementById('lightboxContainer');
         const closeBtn = document.getElementById('lightboxClose');
 
         document.querySelectorAll('.zoomable').forEach(elem => {
             elem.addEventListener('click', (e) => {
-                // Mencegah trigger jika mengeklik kontrol bawaan video
                 if (e.target.tagName.toLowerCase() === 'video' && e.offsetY > e.target.clientHeight - 40) {
                     return;
                 }
